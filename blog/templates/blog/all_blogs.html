@@ -1,0 +1,35 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    body {
+        font-family: 'Rubik', sans-serif;
+    }
+</style>
+
+<br>
+<h1 class="font-weight-bold text-center">John's Blog</h1>
+
+<h2 class="text-center mb-5">{{ blogs.count }} blog post{{ blogs.count|pluralize }}</h2>
+
+{% for blog in blogs %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            {{ blog.date|date:'M d Y'|upper }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'blog:detail' blog.id %}">
+                    {{ blog.title }}
+                </a></h5>
+            <p class="card-text">{{ blog.description|striptags|truncatechars:170 }}</p>
+        </div>
+    </div>
+</div>
+<br>
+{% endfor %}
+
+{% endblock %}

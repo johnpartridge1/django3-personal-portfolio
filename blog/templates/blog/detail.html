@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        font-family: 'Rubik', sans-serif;
+    }
+</style>
+
+<br>
+<div class="container">
+    <h2 class="text-center mb-5">{{ blog.title }}</h2>
+    <h5>{{ blog.date|date:'F jS Y'|upper }}</h5>
+    <p>{{ blog.description|safe }}</p>
+    <br>
+    <br>
+    <div class="text-end">
+        <a href="{% url 'blog:all_blogs' %}" class="btn btn-outline-dark btn-lg">Go Back</a>
+    </div>
+    <br>
+    <br>
+</div>
+
+{% endblock %}
